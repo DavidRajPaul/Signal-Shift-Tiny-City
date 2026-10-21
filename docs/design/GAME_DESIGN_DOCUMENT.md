@@ -74,3 +74,16 @@ Level: valid, completable, no unintended deadlock, deterministic score, readable
 
 ## Decisions to approve
 Title/package ID, audience/rating/regions, portrait vs landscape, signal model, undo, score formula, feasibility of 50 levels, monetization, minimum device/performance budget.
+
+## Phase 0 decisions (approved 21 Oct 2026)
+
+- **Working title:** Signal Shift: Tiny City. Trademark and package-ID check still pending (P0-09).
+- **Audience:** general casual puzzle players. Not child-directed. Age rating to be confirmed in the content rating questionnaire (P9-07).
+- **Markets:** English first; India as test market.
+- **Device class:** mid-range Android (about 4 GB RAM). Confirm with profiling in P2-11.
+- **Orientation:** portrait-first, pending UX testing.
+- **Signal model:** binary signals only in v1.
+- **Undo:** not in v1.
+- **Monetization:** none in v1. Revisit after validation.
+
+**Still open (required before the Phase 0 gate):** score formula, and feasibility of the 50-level target.

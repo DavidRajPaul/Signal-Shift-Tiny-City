@@ -363,7 +363,7 @@ Monetization is conditional on validation and must not compromise the game.
 
 ### Phase 0 — Product definition and validation
 
-- [ ] **P0-01** Confirm working title, audience, age-rating intent, target markets, and supported device class.
+- [x] **P0-01** Confirm working title, audience, age-rating intent, target markets, and supported device class. *(Decisions recorded in `docs/design/GAME_DESIGN_DOCUMENT.md`, approved 21 Oct 2026.)*
 - [ ] **P0-02** Audit traffic-puzzle competitors and record dated store evidence.
 - [ ] **P0-03** Build a competitor matrix: loop, UX, content, reviews, monetization, differentiation.
 - [ ] **P0-04** Write the formal GDD and lock MVP/non-goals.
@@ -587,13 +587,21 @@ Approval required:
 
 | ID | Decision | Status |
 |---|---|---|
-| D-001 | Working title: Signal Shift: Tiny City | Provisional |
+| D-001 | Working title: Signal Shift: Tiny City | Approved as working title; trademark and package-ID check pending (P0-09) |
 | D-002 | Godot 4 + GDScript | Proposed; pin exact stable version in Phase 2 |
 | D-003 | Android-first, offline-first, single-player | Proposed |
 | D-004 | Target 50 handcrafted levels | Proposed; validate in Phase 0 |
 | D-005 | Google Stitch for UX and design-system documentation | Planned; human review required |
-| D-006 | Rewarded ads / remove-ads purchase | Conditional on validation and policy review |
+| D-006 | Rewarded ads / remove-ads purchase | Excluded from v1 (approved 21 Oct 2026); revisit after validation |
 | D-007 | No runtime AI or mandatory backend in v1 | Proposed |
+| D-009 | Audience: general casual players; not child-directed | Approved 21 Oct 2026 |
+| D-010 | Markets: English first; India as test market | Approved 21 Oct 2026 |
+| D-011 | Device: mid-range Android (about 4 GB RAM) | Approved 21 Oct 2026; confirm in P2-11 |
+| D-012 | Portrait-first orientation | Approved 21 Oct 2026; validate in UX testing |
+| D-013 | Binary signals only in v1 | Approved 21 Oct 2026 |
+| D-014 | No undo in v1 | Approved 21 Oct 2026 |
+| D-015 | Score formula | Open; required for Phase 0 gate |
+| D-016 | Feasibility of 50 levels | Open; required for Phase 0 gate |
 | D-008 | Public GitHub repository | Created by project owner; verify visibility in GitHub |
 
 ## Documentation plan
