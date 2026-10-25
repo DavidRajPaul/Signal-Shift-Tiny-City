@@ -40,6 +40,32 @@ Press coverage (GIGAZINE, 5 Aug 2019: https://gigazine.net/gsc_news/en/20190805-
 
 **Open backlog from this audit:** store screenshots with dates and locale, review sampling, hands-on teardown, and a current Traffix Play listing check.
 
+## Title check (P0-09, 25 Oct 2026)
+Web search only. This is not a legal trademark search.
+- **"Signal Shift":** no app or game with this name found on Google Play, the App Store, or Steam. Nearby names: an itch.io creator page named "SignalShift" (https://signalshift.itch.io, content not reviewed) and an itch.io game "Shifting Signals" (https://spoocejuice.itch.io/shifting-signals). Neither is a store listing for a traffic game.
+- **"Tiny City":** a generic phrase used in several titles, including "Tiny City Racer" on the App Store (https://apps.apple.com/us/app/id1562171345) and a "tiny city" itch.io project (https://gamedevgio.itch.io/tiny-city). It works as a subtitle but cannot be protected on its own.
+- David also checked and found the title clear.
+- **Still required before P9-02 (final title and package ID):** a formal registry search (IP India classes 9 and 41, plus USPTO and EUIPO if launching beyond India) and a domain and social-handle check.
+
+## Competitor matrix (P0-03, 25 Oct 2026)
+Built from the store pages and press sources cited above. No reviews have been sampled yet, so review themes are marked "not sampled".
+
+| | Crazy Traffic Control | Traffix | Car Out! | Traffic 3D Parking: Escape Jam | **Signal Shift (planned)** |
+|---|---|---|---|---|---|
+| Player action | Tap lights in real time | Tap a signal to pass one car; double-tap to release a queue | Tap cars to leave a jam | Tap cars to leave a jam | Tap signal groups (binary GO/STOP) |
+| Core loop | Keep cars from crashing as junctions get busier | Send 40–80 cars safely per stage; 10 accidents end the game | Find a clearing order | Find a clearing order | Plan, switch, deliver every car; stars for low waiting |
+| Pressure | Real-time, reflex | Real-time; accidents build up | Low | Low | None early; no timer; level starts frozen |
+| Failure | Crash | Accident count | Blocked move | Blocked move | Named conflict or deadlock, frozen before any crash |
+| Content | Levels of growing complexity | Stages | Many levels | Many levels | 50 authored levels across 5 worlds (30 minimum) |
+| Replay hook | Not checked | Not stated | More levels | More levels | 3 stars, flow score, optional Perfect Flow |
+| Art | Not checked | Not checked | 2D/3D cars | 3D | Miniature-city diorama |
+| Monetization | Free; IAP: no-ads $2.99, coins $4.99–$19.99 | Paid (480 yen in 2019); no IAP or ads mentioned | Ads and IAP (per listing) | Ads and IAP (per listing) | None in v1 |
+| Store signals | ~4.2★, 1.7K ratings (App Store) | Not checked | 10M+ downloads, ~4.7★ | 10M+ downloads, ~4.9★ | — |
+| Review themes | Not sampled | Not sampled | Not sampled | Not sampled | — |
+| What we take from it | Closest mechanic; its coins clash with our no-fake-currency rule | Proves manual signal control already exists; we must win on planning and network puzzles | Traffic puzzles are familiar | 3D alone is not a selling point | Thinking puzzle, not reflex game (D-017) |
+
+**Gaps to fill before launch:** sample 20 or more reviews per game, check Crazy Traffic Control and Traffix on Google Play, record art and replay hooks from hands-on play, and refresh the store numbers.
+
 ## Positioning
 **Updated 25 Oct 2026:** After the P0-02 audit, the differentiator is "a thinking puzzle, not a reflex game": planned, deterministic, explainable, with network reasoning and authored levels. See `docs/design/GAME_DESIGN_DOCUMENT.md`. The original positioning below still applies.
 
