@@ -370,7 +370,7 @@ Monetization is conditional on validation and must not compromise the game.
 - [x] **P0-05** Specify right-of-way, conflicts, queues, failure, and restart precisely. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
 - [x] **P0-06** Define three-star and Perfect Flow scoring with examples. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
 - [x] **P0-07** Define level schema and validation rules. *(See `docs/production/LEVEL_AUTHORING_GUIDE.md`, 25 Oct 2026; file format chosen in P2-06.)*
-- [ ] **P0-08** Define research hypotheses, usability script, metrics, and go/no-go criteria.
+- [x] **P0-08** Define research hypotheses, usability script, metrics, and go/no-go criteria. *(See `docs/research/USABILITY_TEST_PLAN.md`, 25 Oct 2026.)*
 - [ ] **P0-09** Check title/trademark/store-name availability before final naming.
 - [ ] **P0-10** Approve scope, risk register, and phase gates.
 
@@ -610,6 +610,7 @@ Approval required:
 These files are planned; do not assume they exist until committed:
 
 - `docs/research/MARKET_RESEARCH.md` — dated competitor/market research, sources, confidence notes.
+- `docs/research/USABILITY_TEST_PLAN.md` — hypotheses, test rounds, session script, metrics, go/no-go criteria.
 - `docs/design/GAME_DESIGN_DOCUMENT.md` — detailed mechanics, progression, scoring, and level specifications.
 - `docs/ux/STITCH_WORKFLOW.md` — prompts, screen inventory, review and export process.
 - `docs/ux/DESIGN.md` — approved tokens, typography, components, motion, visual rules.
