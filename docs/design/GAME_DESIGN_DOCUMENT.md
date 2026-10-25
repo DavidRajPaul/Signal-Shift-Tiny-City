@@ -28,7 +28,7 @@ Success: brief celebration, stars, persist before navigation, Next Level primary
 - **Open decisions:** binary vs amber signals; undo in v1. Agents must not assume silently.
 
 ## Scoring
-Transparent/deterministic. Candidate inputs: safety (mandatory), signal changes/avoidable stops, queue delay and completion. Thresholds authored per level. One-star completion remains satisfying; Perfect Flow is optional mastery, not a main-path gate. Create five worked examples with multiple valid solutions before implementation. Never score on render FPS or hidden timing.
+Transparent/deterministic. Formula decided; see "Score formula" below. Candidate inputs were: safety (mandatory), signal changes/avoidable stops, queue delay and completion. Thresholds authored per level. One-star completion remains satisfying; Perfect Flow is optional mastery, not a main-path gate. Create five worked examples with multiple valid solutions before implementation. Never score on render FPS or hidden timing.
 
 ## Campaign: 50-level target
 These are concepts, not validated maps. Every final level needs a map, conflict matrix, solution/failure analysis, automated validation and human playtest.
@@ -86,4 +86,52 @@ Title/package ID, audience/rating/regions, portrait vs landscape, signal model, 
 - **Undo:** not in v1.
 - **Monetization:** none in v1. Revisit after validation.
 
-**Still open (required before the Phase 0 gate):** score formula, and feasibility of the 50-level target.
+**Decided 25 Oct 2026 (delegated by David; review at the Phase 0 gate):** differentiator, score formula, and 50-level feasibility. See the sections below.
+
+## Differentiator (decided 25 Oct 2026)
+The closest competitors (Traffix, Crazy Traffic Control; see `docs/research/MARKET_RESEARCH.md`) are real-time reflex games: lights are tapped under pressure, and accidents accumulate until the run ends. Signal Shift is a **thinking puzzle, not a reflex game**:
+1. **Plan before pressure.** Routes, destinations, and conflict zones are visible before action, and early levels have no countdown.
+2. **Deterministic and explainable.** The same inputs always give the same result, and every failure names its cause.
+3. **Network reasoning.** Downstream capacity and linked intersections (Worlds 3–5) make the puzzle about ordering and flow, not tap speed.
+4. **Authored levels with star mastery.** Each level is a designed puzzle with replayable star targets, not an endless survival run.
+
+**Testable claim:** in uncoached tests, players describe the game as a puzzle rather than a reaction game, and replay levels for stars. If testers call it a reflex game, revisit before Phase 3 ends.
+
+## Score formula (decided 25 Oct 2026)
+All values are integers computed from the simulation's result summary, never from animation time or frame rate.
+
+**Inputs (per level run):**
+- `W` = total wait ticks: the sum, over all vehicles, of ticks spent stopped at a signal or in a queue.
+- `S` = signal changes the player made.
+- Authored per level: `S_par` (minimum switches in the reference solution), `W3` and `W2` (wait thresholds, `W3 ≤ W2`), and `W_opt` (minimum achievable wait, found by the level validator).
+- `E = max(0, S − S_par)`, the extra switches.
+
+**Safety:** any conflict-zone violation or unresolvable deadlock is a failure. No stars, no score.
+
+**Stars (successful run):**
+- 1 star: every required vehicle delivered safely.
+- 2 stars: `W ≤ W2`.
+- 3 stars: `W ≤ W3` and `E ≤ 1` (one spare switch is allowed, so alternative orderings can still earn 3 stars).
+
+**Perfect Flow (optional mastery badge):** `W = W_opt` and `S = S_par`. It is never required for progression.
+
+**Flow score (shown on results details and used for best-score replay):** `max(0, 1000 − 5·W − 20·E)`.
+
+Tutorial levels set generous `W3`/`W2`. Tick rate is a Phase 2 technical decision; thresholds are expressed in ticks so they stay valid if the rate is fixed early.
+
+### Worked examples
+| # | Level | `S_par`, `W3`, `W2`, `W_opt` | Player run | Result |
+|---|---|---|---|---|
+| 1 | L1, one signal, 3 cars | 1, 15, 40, 0 | Switches at once: `W=0`, `S=1` | 3 stars, Perfect Flow, score 1000 |
+| 2 | L1 | 1, 15, 40, 0 | Switches a moment late: `W=12`, `S=1` | 3 stars, no Perfect Flow, score 940 |
+| 3 | L3, crossing conflict, 2 groups, 4 cars | 2, 40, 80, 30 | Reference order: `W=30`, `S=2` | 3 stars, Perfect Flow, score 850 |
+| 4 | L3 | 2, 40, 80, 30 | Other valid order, one extra switch: `W=38`, `S=3` | 3 stars, no Perfect Flow, score 790 |
+| 5 | L3 | 2, 40, 80, 30 | Cautious play: `W=120`, `S=6` | 1 star, score 320 |
+| 6 | L3 | 2, 40, 80, 30 | Releases both groups together, cars meet in the conflict zone | Failure: conflict explained, Retry |
+
+Examples 3 and 4 are two valid solutions that both earn 3 stars. Example 5 shows a one-star clear that still counts as success.
+
+## 50-level feasibility (decided 25 Oct 2026)
+- 50 levels stay the target.
+- Minimum shippable content is Worlds 1–3 (30 levels), if needed.
+- Decide at the end of P5-03 (levels 1–10 authored and tuned) using measured hours per level, including validation and playtesting. If the projected total exceeds the schedule, ship 30 and add Worlds 4–5 as an update.

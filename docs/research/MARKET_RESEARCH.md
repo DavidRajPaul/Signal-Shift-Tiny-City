@@ -41,6 +41,8 @@ Press coverage (GIGAZINE, 5 Aug 2019: https://gigazine.net/gsc_news/en/20190805-
 **Open backlog from this audit:** store screenshots with dates and locale, review sampling, hands-on teardown, and a current Traffix Play listing check.
 
 ## Positioning
+**Updated 25 Oct 2026:** After the P0-02 audit, the differentiator is "a thinking puzzle, not a reflex game": planned, deterministic, explainable, with network reasoning and authored levels. See `docs/design/GAME_DESIGN_DOCUMENT.md`. The original positioning below still applies.
+
 **“Control the lights. Keep the tiny city moving.”** Players schedule traffic streams, protect conflict zones and prevent downstream queues blocking junctions. A polished miniature-city diorama supports recognition; optional Perfect Flow scoring encourages mastery. Test against a flat board and a traffic-jam interaction.
 
 ## Audience assumptions

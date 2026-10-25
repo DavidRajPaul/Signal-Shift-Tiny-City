@@ -368,7 +368,7 @@ Monetization is conditional on validation and must not compromise the game.
 - [ ] **P0-03** Build a competitor matrix: loop, UX, content, reviews, monetization, differentiation.
 - [ ] **P0-04** Write the formal GDD and lock MVP/non-goals.
 - [ ] **P0-05** Specify right-of-way, conflicts, queues, failure, and restart precisely.
-- [ ] **P0-06** Define three-star and Perfect Flow scoring with examples.
+- [x] **P0-06** Define three-star and Perfect Flow scoring with examples. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
 - [ ] **P0-07** Define level schema and validation rules.
 - [ ] **P0-08** Define research hypotheses, usability script, metrics, and go/no-go criteria.
 - [ ] **P0-09** Check title/trademark/store-name availability before final naming.
@@ -600,8 +600,9 @@ Approval required:
 | D-012 | Portrait-first orientation | Approved 21 Oct 2026; validate in UX testing |
 | D-013 | Binary signals only in v1 | Approved 21 Oct 2026 |
 | D-014 | No undo in v1 | Approved 21 Oct 2026 |
-| D-015 | Score formula | Open; required for Phase 0 gate |
-| D-016 | Feasibility of 50 levels | Open; required for Phase 0 gate |
+| D-015 | Score formula: wait ticks + extra switches, authored thresholds, optional Perfect Flow | Decided 25 Oct 2026 (delegated); review at gate |
+| D-016 | 50 levels target; 30 (Worlds 1–3) minimum; decide after P5-03 | Decided 25 Oct 2026 (delegated); review at gate |
+| D-017 | Differentiator: thinking puzzle, not reflex game | Decided 25 Oct 2026 (delegated); validate in usability tests |
 | D-008 | Public GitHub repository | Created by project owner; verify visibility in GitHub |
 
 ## Documentation plan
