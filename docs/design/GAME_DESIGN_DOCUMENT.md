@@ -131,6 +131,59 @@ Tutorial levels set generous `W3`/`W2`. Tick rate is a Phase 2 technical decisio
 
 Examples 3 and 4 are two valid solutions that both earn 3 stars. Example 5 shows a one-star clear that still counts as success.
 
+## Traffic rules specification (P0-05, decided 25 Oct 2026)
+These rules are the contract for the simulation, the level validator, and the scoring. Everything is in integer ticks. The tick rate is a Phase 2 decision.
+
+### World model
+- Every lane is a fixed sequence of **slots**. A slot holds at most one vehicle. Every v1 vehicle occupies exactly one slot.
+- A **movement** is one authored path through a junction (for example, north-to-east). Each movement belongs to exactly one signal group.
+- The slot just before a junction is the **stop line**. The slots inside the junction that a movement passes through are its **junction path**.
+- A **conflict zone** is a junction slot shared by two or more movements. Conflict zones are authored in the level data, never inferred from visuals. Two movements conflict if their junction paths share a conflict zone.
+- Each vehicle has a stable ID, a route (list of slots), a spawn tick, and a speed class (ticks per slot; for example car = 2). A vehicle is **ready** on ticks when its move timer allows it to advance.
+
+### Signals (binary)
+- Each signal group is GO or STOP. Initial state is authored.
+- Tapping a signal toggles it. The change takes effect at the start of the next tick.
+- At most one change per signal per tick. Extra taps in the same tick are ignored, with light feedback.
+- A signal can be **locked** by level data (for example in tutorials). Tapping a locked signal is an invalid action: no state change, an explanation, and no count toward `S`.
+
+### Movement rules (per ready vehicle)
+1. **Queueing:** a vehicle advances only into an empty slot. The same-lane vehicle ahead always blocks. Vehicles never collide within a lane.
+2. **Signal:** a vehicle at the stop line may enter the junction only if its signal group is GO.
+3. **Don't block the box:** a vehicle may enter the junction only if the first slot of its exit segment is free at that moment. Otherwise it waits, even on GO.
+4. **Commitment:** a vehicle that has entered the junction is committed. It keeps moving to its exit regardless of later signal changes.
+5. **Reservation:** on entering, a committed vehicle reserves every conflict zone on its junction path until it has left that zone.
+6. **Spawn:** a vehicle appears at its spawn tick if its first slot is free. Otherwise it is held, and holding counts as waiting.
+7. **Delivery:** a vehicle that reaches the end of its route is removed and counted as delivered.
+
+### Safety and failure
+- **Conflict:** if a vehicle would enter a junction while any conflict zone on its path is reserved by a conflicting movement, the run fails on that tick. Both vehicles freeze and are highlighted before any collision animation. The message names both vehicles and their movements (for example, "Car 4 entered while Car 2 was still crossing").
+- Because commitment outlasts signal changes, switching a crossing group to GO too early is a real mistake. This is the main lesson binary signals teach in place of an amber phase.
+- **Deadlock:** the run fails if every remaining vehicle is blocked by occupancy (rules 1, 3, or 6), not by a STOP signal, and the blocking forms a cycle. No signal change can resolve it. The message points to the cycle.
+- **Not a failure:** leaving signals on STOP. Waiting lowers the score but never ends the run, and there is no timer.
+
+### Ordering within a tick (determinism)
+Follow the order in `docs/technical/TECHNICAL_ARCHITECTURE.md`:
+1. Apply queued taps in the order received (one per signal).
+2. Process ready vehicles front-to-back along each lane. Across lanes, lower vehicle ID goes first.
+3. If two vehicles compete for the same free slot (for example, a shared exit), the lower ID takes it and the other waits.
+4. Check conflicts as each vehicle enters. The first violation ends the tick as a failure.
+5. Check delivery, deadlock, and win.
+
+### Wait ticks (input to scoring)
+`W` increases by one for each vehicle, on each tick, where the vehicle is ready to advance but does not. That covers STOP signals, occupied slots, a full exit, and held spawns. Ticks before the run starts are not counted.
+
+### Run states
+- **READY:** the level is shown frozen with routes, signals, and destinations. Nothing moves. The run starts when the player taps a signal or the Start button.
+- **RUNNING:** ticks advance.
+- **PAUSED:** no ticks advance and taps are refused with feedback. Resume continues from the same tick with no catch-up. Moving the app to the background pauses automatically.
+- **Win:** every required vehicle delivered. The result is saved before the results screen.
+- **Restart:** rebuilds the level from its immutable definition. Tick, `W`, `S`, signals, vehicles, and reservations all reset, and the level returns to READY.
+- **No undo** in v1 (D-014).
+
+### Edge cases the tests must cover
+Two vehicles from conflicting groups entering on the same tick (lower ID enters, the second triggers failure). A tap on the same tick a vehicle reaches the stop line (the tap applies first, at the start of the tick). A full exit while the signal is GO. A held spawn. A tap during PAUSED. Restart mid-crossing. Background and resume during a crossing.
+
 ## 50-level feasibility (decided 25 Oct 2026)
 - 50 levels stay the target.
 - Minimum shippable content is Worlds 1–3 (30 levels), if needed.

@@ -367,7 +367,7 @@ Monetization is conditional on validation and must not compromise the game.
 - [ ] **P0-02** Audit traffic-puzzle competitors and record dated store evidence.
 - [ ] **P0-03** Build a competitor matrix: loop, UX, content, reviews, monetization, differentiation.
 - [ ] **P0-04** Write the formal GDD and lock MVP/non-goals.
-- [ ] **P0-05** Specify right-of-way, conflicts, queues, failure, and restart precisely.
+- [x] **P0-05** Specify right-of-way, conflicts, queues, failure, and restart precisely. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
 - [x] **P0-06** Define three-star and Perfect Flow scoring with examples. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
 - [ ] **P0-07** Define level schema and validation rules.
 - [ ] **P0-08** Define research hypotheses, usability script, metrics, and go/no-go criteria.
