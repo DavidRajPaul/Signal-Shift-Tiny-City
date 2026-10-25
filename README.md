@@ -366,7 +366,7 @@ Monetization is conditional on validation and must not compromise the game.
 - [x] **P0-01** Confirm working title, audience, age-rating intent, target markets, and supported device class. *(Decisions recorded in `docs/design/GAME_DESIGN_DOCUMENT.md`, approved 21 Oct 2026.)*
 - [ ] **P0-02** Audit traffic-puzzle competitors and record dated store evidence.
 - [x] **P0-03** Build a competitor matrix: loop, UX, content, reviews, monetization, differentiation. *(See `docs/research/MARKET_RESEARCH.md`, 25 Oct 2026. Review themes not yet sampled.)*
-- [ ] **P0-04** Write the formal GDD and lock MVP/non-goals.
+- [x] **P0-04** Write the formal GDD and lock MVP/non-goals. *(GDD v1.0, 25 Oct 2026.)*
 - [x] **P0-05** Specify right-of-way, conflicts, queues, failure, and restart precisely. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
 - [x] **P0-06** Define three-star and Perfect Flow scoring with examples. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
 - [x] **P0-07** Define level schema and validation rules. *(See `docs/production/LEVEL_AUTHORING_GUIDE.md`, 25 Oct 2026; file format chosen in P2-06.)*

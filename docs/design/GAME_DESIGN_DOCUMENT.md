@@ -1,5 +1,5 @@
 # Game Design Document — Signal Shift: Tiny City
-**Version:** 0.1 proposal · **Date:** 20 October 2026 · **Status:** Phase 0 approval required.
+**Version:** 1.0 · **Date:** 25 October 2026 · **Status:** Locked for the Phase 0 gate (P0-04). Changes after the gate need David's approval and a decision-log entry in the README.
 
 ## High concept
 The player is a traffic coordinator for a miniature city. They operate signal groups to guide cars through intersections, avoid conflicting movements, prevent downstream queues blocking junctions, and deliver every vehicle safely.  
@@ -9,7 +9,7 @@ The player is a traffic coordinator for a miniature city. They operate signal gr
 1. Instant readability. 2. Satisfying feedback. 3. Fair deterministic rules. 4. Diorama charm without visual clutter. 5. Mastery without punishing first completion. 6. Short sessions and safe resume. 7. No placeholder-only shipped screens/assets/audio.
 
 ## Session and core loop
-Audience is hypothesized to be casual puzzle players; age target/rating remains undecided. Intended level length 30–120 seconds; first meaningful action target under 10 seconds. Offline, account-free play. No forced timer early; no monetization before first success.
+Audience is general casual puzzle players, not child-directed (D-009). The age rating comes from the content rating questionnaire in P9-07. Intended level length 30–120 seconds; first meaningful action target under 10 seconds. Offline, account-free play. No forced timer early; no monetization before first success.
 
 Observe → understand routes/signals → tap signal → watch traffic resolve → feedback → deliver safely → earn stars → unlock/replay.
 
@@ -25,7 +25,7 @@ Success: brief celebration, stars, persist before navigation, Next Level primary
 - Check downstream capacity before entering junctions.
 - Simulation—not tween/render state—decides safety. Queue spacing, deadlock, simultaneous arrivals and priorities are deterministic.
 - Win when all required vehicles arrive. Loss only on defined unsafe conflict or unresolvable deadlock with a visible cause.
-- **Open decisions:** binary vs amber signals; undo in v1. Agents must not assume silently.
+- **Decided:** binary signals only (D-013) and no undo in v1 (D-014). Full rules are in "Traffic rules specification" below.
 
 ## Scoring
 Transparent/deterministic. Formula decided; see "Score formula" below. Candidate inputs were: safety (mandatory), signal changes/avoidable stops, queue delay and completion. Thresholds authored per level. One-star completion remains satisfying; Perfect Flow is optional mastery, not a main-path gate. Create five worked examples with multiple valid solutions before implementation. Never score on render FPS or hidden timing.
@@ -67,13 +67,20 @@ Tutorial: one contextual instruction at a time; no countdown or first-action fai
 Stable isometric/three-quarter top-down camera, warm daylight, controlled shadows, tactile materials, readable vehicles and roads. Smooth stops/turns; restrained skippable VFX. Audio cues: UI, signal, safe passage, conflict, progress, star, completion, unlock, ambience/music. Separate audio buses and persisted controls.
 
 ## Monetization/accessibility
-Conditional on validation/policy: opt-in rewarded ad and remove-ads only; no forced ads during active play/tutorial or paid randomized rewards. Offline play cannot depend on provider. Never rely on red/green alone; support readable touch targets, safe areas, text scaling, reduced motion where needed and externalized strings.
+No monetization in v1 (D-006). If it is added after validation, it is limited to: opt-in rewarded ad and remove-ads only; no forced ads during active play/tutorial or paid randomized rewards. Offline play cannot depend on provider. Never rely on red/green alone; support readable touch targets, safe areas, text scaling, reduced motion where needed and externalized strings.
 
 ## Content complete
 Level: valid, completable, no unintended deadlock, deterministic score, readable routes, sounds, restart and human test record. Screen: all states/interactions, loading/error behavior, approved-reference match and aspect-ratio testing. Audio: licensed, normalized, routed and tested.
 
-## Decisions to approve
-Title/package ID, audience/rating/regions, portrait vs landscape, signal model, undo, score formula, feasibility of 50 levels, monetization, minimum device/performance budget.
+## Locked MVP scope (P0-04)
+**In v1:** single-player, offline, portrait-first Android game; binary signals; deterministic slot-based simulation; 50 authored levels across 5 worlds (minimum 30, decided after P5-03); 3 stars, flow score, optional Perfect Flow; first-run tutorial; pause, restart, background-safe resume; local progress and settings; music, SFX, and haptics controls; production art, audio, and store assets.
+
+**Not in v1:** monetization, undo, amber signals, multi-slot vehicles, multiplayer, accounts, cloud saves, user-made levels, live operations, runtime generative AI, analytics, mandatory backend, open world, physics-based vehicles, loot boxes, subscriptions.
+
+## Decision status
+Approved or decided: D-001 title (formal trademark search before P9-02), D-006 no v1 monetization, D-009 audience, D-010 markets, D-011 device class, D-012 portrait-first, D-013 binary signals, D-014 no undo, D-015 score formula, D-016 level count, D-017 differentiator.
+
+Still open, decided in later phases: package ID (P9-02), performance budget (P2-11), tick rate and level file format (P2-06), engine version (P2-01), 3D map vs grid/list level select (Phase 1).
 
 ## Phase 0 decisions (approved 21 Oct 2026)
 
