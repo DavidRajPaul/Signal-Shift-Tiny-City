@@ -1,21 +1,59 @@
 # Stitch UX Workflow — Signal Shift: Tiny City
-**Status:** Prompt/handoff plan only. Screens are not claimed generated or approved. Tool: https://stitch.withgoogle.com/
+**Status:** P1-01 drafted 25 Oct 2026 (master prompt v2 and visual-reference brief). No screens have been generated or approved yet. Tool: https://stitch.withgoogle.com/
 
 ## Design brief
-Android phone, portrait-first pending testing; casual traffic-logic puzzle; miniature-city diorama; calm, clever, tactile, charming and legible. Core action: tap a signal to control vehicle movement. Age target undecided. Avoid generic dashboards, clutter, fake currency, false urgency, tiny controls, unreadable roads and decorative elements that look interactive.
+Android phone, portrait-first (D-012); casual traffic-logic puzzle; miniature-city diorama; calm, clever, tactile, charming and legible. Core action: tap a signal to control vehicle movement. General casual audience, 18+, not child-directed (D-009). English UI (D-010). No ads, purchases, or currency in v1 (D-006). Avoid generic dashboards, clutter, fake currency, false urgency, tiny controls, unreadable roads and decorative elements that look interactive.
 
-## Master prompt
-> Design a premium Android casual puzzle game called “Signal Shift: Tiny City” (working title). Players control traffic signals in a stylized miniature city. Use polished 3D diorama visuals, expressive small vehicles, clean road markings, compact buildings, warm daylight, soft shadows, tactile materials and restrained accents. Intersection and routes are the visual hero.
+## Visual-reference brief (P1-01)
+Collect references for **mood only**. Never copy another game's art, layouts, characters, or UI. Record every reference image's source in the review log, and do not commit images without a license.
+
+**Look for:**
+- Tilt-shift photography of real cities (small-scale feel, shallow depth of field).
+- Model railway and architectural dioramas (tactile materials, neat streets, painted surfaces).
+- Clean low-poly or soft-shaded isometric city illustration (simple shapes, readable roads).
+- Warm late-morning daylight with soft grounded shadows.
+- Toy-like but tidy vehicles: rounded, chunky silhouettes, readable from above.
+
+**Avoid (anti-references):**
+- Neon, casino, or slot-machine styling.
+- Cluttered asset-pack cities where props compete with roads.
+- Flat hyper-casual boards with no depth.
+- Realistic gritty traffic, crash imagery, or damage effects.
+- Night scenes or heavy fog for gameplay levels.
+
+**Palette:** use the `color.*` tokens in `docs/ux/DESIGN.md`. World colors stay softer than the UI accent colors, so controls always stand out.
+
+**Signal states:** use the binary mapping in `docs/ux/DESIGN.md` §7 (GO, STOP, BLOCKED, DISABLED), each with a color, an icon, and a label.
+
+## Master prompt v2 (P1-01)
+Paste this first in Stitch, then add one screen prompt at a time.
+
+> Design a premium Android casual puzzle game called "Signal Shift: Tiny City". Portrait phone layout (about 1080 × 2400 px, with Android status and gesture bars as safe areas). Audience: adult casual puzzle players. English text.
 >
-> Create a cohesive game UI, not a generic app dashboard. Use hierarchy, generous spacing, readable typography, clear touch targets and restrained motion. Never rely on red/green alone; pair colors with icons/shapes, labels or animation. Use stable three-quarter/isometric top-down framing.
+> Players control traffic signals in a stylized miniature-city diorama: warm daylight, soft shadows, tactile painted materials, compact buildings, chunky rounded vehicles, clean road markings. Use a stable three-quarter top-down camera. The intersection, its routes, and its signals are always the visual hero.
 >
-> Design connected screens/states: main menu, world/level select, level intro, gameplay ready/running, pause, star results, failure/retry, settings, tutorial, no-network information and save recovery. Optional monetization only if separately approved; never interrupt tutorial or active play.
+> This is a calm thinking puzzle, not a reflex game. No timers, no countdowns, no urgency. Each signal is binary: GO or STOP. Show every signal state with a color, an icon, and a text label, never color alone: GO = green with an up arrow and "GO"; STOP = red with a solid bar and "STOP"; BLOCKED = amber with a slashed circle and "BLOCKED"; DISABLED = grey with a dashed outline.
 >
-> Main menu has one dominant Play/Continue. Gameplay prioritizes road readability, places controls near their movements, shows objective/pause, avoids excessive counters. Results celebrate briefly and make Next Level primary.
+> Use these colors: text #202B36, muted text #5E6B76, background #F5F2E9, cards #FFFFFF, raised panels #FFF9ED, primary action #276B67 (pressed #1D514E), stars #F2C45C, success #247A55, warning #8B5A12, danger #B33D3D, borders #D8D8CF, focus #1E5CC6. One clean sans-serif typeface. 4 dp spacing grid. Corner radius 12 dp for controls, 18 dp for cards, 24 dp for dialogs. Touch targets at least 48 × 48 dp.
 >
-> Include reusable tokens/components for type, spacing, color, radii, elevation, icons and motion. Design narrow Android phones and safe areas; adapt to other ratios. Include pressed/disabled/loading/error/confirmation states. No lorem ipsum, unexplained currency, fake notifications or inert controls.
+> Every screen has exactly one primary action. Text never sits directly on busy 3D imagery without a solid panel. Never cover roads, signals, vehicles, routes, or destinations with UI.
 >
-> Deliver visual screens, components, interaction annotations and design-system notes reproducible in Godot. Visual design—not generated code—is the primary deliverable.
+> Do not include ads, purchases, coins, gems, currency, energy, lives, daily rewards, notifications, or account sign-in. No lorem ipsum.
+>
+> Deliver visual screen designs with component states and short interaction notes. These are proposals for human review.
+
+## Screen prompt order (P1-02 to P1-04)
+Run these after the master prompt, one at a time, and review each before the next.
+1. **Gameplay, READY** (P1-03): "Level 3 of World 1, frozen before start. One four-way junction, two signal groups, four small cars waiting. Route arrows and destinations visible. Objective at top: 'Get all 4 cars home safely.' Pause button top-right. Signal controls next to their roads. Start button as the primary action."
+2. **Gameplay, RUNNING with BLOCKED feedback** (P1-03): "Same level running. One car waiting at a GO signal because its exit is full; show the BLOCKED state and the short reason 'Exit full.'"
+3. **Failure** (P1-04): "Two cars frozen in the junction, highlighted. Message: 'Car 4 entered while Car 2 was still crossing.' Retry is primary; Level Select is secondary. Calm, not alarming."
+4. **Results, 3 stars** (P1-04): "Level complete. Three stars, flow score 850, optional Perfect Flow badge. Next Level is primary; Replay and Level Select are secondary."
+5. **Results, 1 star** (P1-04): "Level complete with one star. Still celebratory. Show 'Fewer waits earn more stars' as a hint."
+6. **Main menu** (P1-02): "Miniature-city hero image, title, one Play/Continue button, small progress line, Settings and Level Select as secondary."
+7. **Level select** (P1-04): "World 1 grid of 10 levels: completed with stars, current, and locked states, each distinguishable without color."
+8. **Pause, Settings, Tutorial overlay** (P1-04): "Pause sheet with Resume primary. Settings with independent Music, Sound Effects, Haptics toggles, plus Help, Privacy, Credits. Tutorial overlay: one short instruction pointing at one signal, never covering its road."
+
+Gameplay comes first because it is the hardest screen and sets the rules for everything else.
 
 ## Screens and acceptance
 1. Main menu: city hero, Play/Continue, progress, map/settings; one primary action.

@@ -10,7 +10,7 @@
 
 ## Project status
 
-- **Current phase:** Phase 0 — Product definition and validation
+- **Current phase:** Phase 1 — UX, art direction, sound preproduction (Phase 0 gate approved by David, 25 Oct 2026)
 - **Release status:** Not implemented; not submitted to Google Play.
 - **Source of truth:** this README and the documents listed under [Documentation plan](#documentation-plan).
 
@@ -364,7 +364,7 @@ Monetization is conditional on validation and must not compromise the game.
 ### Phase 0 — Product definition and validation
 
 - [x] **P0-01** Confirm working title, audience, age-rating intent, target markets, and supported device class. *(Decisions recorded in `docs/design/GAME_DESIGN_DOCUMENT.md`, approved 21 Oct 2026.)*
-- [ ] **P0-02** Audit traffic-puzzle competitors and record dated store evidence.
+- [ ] **P0-02** Audit traffic-puzzle competitors and record dated store evidence. *(Web audit done 25 Oct 2026. Gate approved with a known gap: dated store screenshots and review sampling still open.)*
 - [x] **P0-03** Build a competitor matrix: loop, UX, content, reviews, monetization, differentiation. *(See `docs/research/MARKET_RESEARCH.md`, 25 Oct 2026. Review themes not yet sampled.)*
 - [x] **P0-04** Write the formal GDD and lock MVP/non-goals. *(GDD v1.0, 25 Oct 2026.)*
 - [x] **P0-05** Specify right-of-way, conflicts, queues, failure, and restart precisely. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
@@ -372,13 +372,13 @@ Monetization is conditional on validation and must not compromise the game.
 - [x] **P0-07** Define level schema and validation rules. *(See `docs/production/LEVEL_AUTHORING_GUIDE.md`, 25 Oct 2026; file format chosen in P2-06.)*
 - [x] **P0-08** Define research hypotheses, usability script, metrics, and go/no-go criteria. *(See `docs/research/USABILITY_TEST_PLAN.md`, 25 Oct 2026.)*
 - [x] **P0-09** Check title/trademark/store-name availability before final naming. *(Web and store-name check 25 Oct 2026, no conflict found. Formal registry search required before P9-02.)*
-- [ ] **P0-10** Approve scope, risk register, and phase gates.
+- [x] **P0-10** Approve scope, risk register, and phase gates. *(Approved by David, 25 Oct 2026.)*
 
-**Gate:** GDD, research plan, MVP boundary, and acceptance criteria approved.
+**Gate:** GDD, research plan, MVP boundary, and acceptance criteria approved. **Passed 25 Oct 2026.**
 
 ### Phase 1 — UX, art direction, sound preproduction
 
-- [ ] **P1-01** Write Stitch master prompt and visual-reference brief.
+- [x] **P1-01** Write Stitch master prompt and visual-reference brief. *(See `docs/ux/STITCH_WORKFLOW.md`, 25 Oct 2026.)*
 - [ ] **P1-02** Generate/iterate main-menu concepts in Stitch.
 - [ ] **P1-03** Design gameplay and all signal/vehicle states.
 - [ ] **P1-04** Design world/level selection, results, settings, pause, tutorial, errors, and purchase states.
@@ -635,4 +635,4 @@ Prefer official/primary sources for implementation and release requirements. Re-
 
 ---
 
-**Next action:** complete **P0-01** and **P0-02**. Do not start building game scenes until Phase 0 scope and Phase 1 UX/art direction are approved.
+**Next action:** Phase 1. P1-01 (Stitch master prompt and visual-reference brief) is drafted in `docs/ux/STITCH_WORKFLOW.md`; P1-02 needs David to run Stitch. Do not start building game scenes until Phase 1 UX/art direction is approved.
