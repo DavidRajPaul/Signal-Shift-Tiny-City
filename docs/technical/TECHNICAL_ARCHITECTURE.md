@@ -41,6 +41,7 @@ Define multi-zone reservations, headway, priority, blocked exits and deadlock. S
 BOOT, MENU, WORLD_SELECT, LEVEL_INTRO, READY, RUNNING, PAUSED, SUCCESS, FAILURE, RESULTS. Guard transitions centrally. Repeated taps cannot duplicate scenes/results. Pause freezes domain advancement; resume must not catch up hidden ticks. Restart reconstructs from immutable level definition and resets all runtime state.
 
 ## Level validation
+The field list and rules V01–V14 are defined in `docs/production/LEVEL_AUTHORING_GUIDE.md` (P0-07). The text below remains for the format decision.
 Choose typed Godot Resources vs JSON after comparing editor ergonomics, diffability and agent edit safety; never keep duplicate canonical formats. Validate unique IDs, route connectivity/destinations, legal signal groups/transitions, consistent conflicts, valid paths/assets, achievable ordered stars, reachable intended solution, no accidental deadlock, tutorial keys and license records. Report exact level/error; never silently skip invalid content.
 
 ## Saves/scoring

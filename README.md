@@ -369,7 +369,7 @@ Monetization is conditional on validation and must not compromise the game.
 - [ ] **P0-04** Write the formal GDD and lock MVP/non-goals.
 - [x] **P0-05** Specify right-of-way, conflicts, queues, failure, and restart precisely. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
 - [x] **P0-06** Define three-star and Perfect Flow scoring with examples. *(See `docs/design/GAME_DESIGN_DOCUMENT.md`, 25 Oct 2026.)*
-- [ ] **P0-07** Define level schema and validation rules.
+- [x] **P0-07** Define level schema and validation rules. *(See `docs/production/LEVEL_AUTHORING_GUIDE.md`, 25 Oct 2026; file format chosen in P2-06.)*
 - [ ] **P0-08** Define research hypotheses, usability script, metrics, and go/no-go criteria.
 - [ ] **P0-09** Check title/trademark/store-name availability before final naming.
 - [ ] **P0-10** Approve scope, risk register, and phase gates.
