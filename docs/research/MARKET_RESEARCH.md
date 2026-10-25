@@ -20,6 +20,26 @@ Snapshot observed 20 Oct 2026 displayed 10M+ downloads and a 4.9-star rating. Tr
 
 Store tiers/ratings are snapshots and do not reveal retention, revenue, conversion or acquisition costs. This is not yet a systematic review analysis or hands-on teardown.
 
+## Signal-control competitor audit (P0-02)
+**Checked:** 25 Oct 2026, web sources only. No hands-on play, store screenshots, or review sampling yet. Store values are snapshots and locale-dependent.
+
+**Crazy Traffic Control — BoomHits sp. z o.o.**
+App Store listing (https://apps.apple.com/us/app/-/id1529430333): free with in-app purchases ("NO ADS" $2.99, coin bundles $4.99–$19.99). Casual category. About 4.2 stars from 1.7K ratings. Listing says: "Tap & change lights - you're the one responsible now!" Intersections grow more complex as you progress. Version 3.9.3, last updated Aug 19 (year not shown). No Google Play data checked yet.
+*Takeaway:* This is the closest mechanic match (tap to change lights in real time) and it already uses a free-with-IAP model. Ads and coin currency are part of its model, which matters for our "no fake currency" principle.
+
+**Traffix — developer not stated in the source**
+Press coverage (GIGAZINE, 5 Aug 2019: https://gigazine.net/gsc_news/en/20190805-traffix) describes a manual traffic-signal puzzle. The player taps a signal to pass one car, or double-taps to release a queue. Tapping again toggles red and green. Stages clear by safely sending about 40–80 cars. Some cars follow signals ("white") and others run free ("black"). Ten accidents end the game. Listed as a paid app (480 yen at the time) with no IAP or ads mentioned. Available on iOS, Android, and Steam (https://store.steampowered.com/app/1102580/Traffix). Android package com.infinity.traffix is listed on SimilarWeb; current Play status not verified.
+*Takeaway:* This game already does manual signal control with queue release, which is close to our core loop. Our differentiator cannot be "manual signal control" alone. It has to come from the level-design, route-conflict, and downstream-capacity rules, and we need to test that. This is a significant finding and it weakens the positioning in the next section.
+
+**Earlier desk entries** (Car Out!, Traffic 3D Parking) remain below as recorded on 20 Oct 2026. Neither is a signal-control game.
+
+**Implications for P0 decisions:**
+- Re-run the differentiation hypothesis against Traffix and Crazy Traffic Control before the GDD is locked.
+- Free-with-IAP (Crazy Traffic Control) and paid (Traffix) are both live models. The no-monetization v1 default is still viable, but the paid-premium option should be assessed as well.
+- Check Traffix's current Play status and version before using it as evidence in the store listing.
+
+**Open backlog from this audit:** store screenshots with dates and locale, review sampling, hands-on teardown, and a current Traffix Play listing check.
+
 ## Positioning
 **“Control the lights. Keep the tiny city moving.”** Players schedule traffic streams, protect conflict zones and prevent downstream queues blocking junctions. A polished miniature-city diorama supports recognition; optional Perfect Flow scoring encourages mastery. Test against a flat board and a traffic-jam interaction.
 
