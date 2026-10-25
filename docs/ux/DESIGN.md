@@ -2,7 +2,7 @@
 
 **Path:** `docs/ux/DESIGN.md`  
 **Version:** 0.1  
-**Status:** Proposed; requires human approval before production UI implementation.  
+**Status:** Proposed; requires human approval before production UI implementation. Phase 0 decisions applied 25 Oct 2026 (see §16).  
 **Platform:** Android mobile game, Godot 4. Portrait-first is a working assumption, not an approved decision.
 
 This document defines reusable interface rules. `docs/ART_BIBLE.md` governs 3D world art; `docs/GAME_DESIGN_DOCUMENT.md` governs gameplay and screen intent. Open product decisions remain open—agents must not silently decide them.
@@ -32,7 +32,22 @@ Principles:
 
 ## 3. Proposed color tokens
 
-These are initial values for mockups and usability testing—not a claim of verified contrast compliance.
+These are initial values for mockups and usability testing. Contrast ratios below were computed from the hex values (WCAG 2.x relative luminance). They must be re-checked on rendered screens before release.
+
+| Pair | Ratio | Status |
+|---|---:|---|
+| `ink` on `canvas` | 12.85:1 | Pass, body text |
+| `ink` on `surface-raised` | 13.71:1 | Pass, body text |
+| `ink-muted` on `canvas` | 4.88:1 | Pass, body text (AA) |
+| `ink-muted` on `surface` | 5.47:1 | Pass, body text (AA) |
+| `white` on `primary` | 6.20:1 | Pass, button label |
+| `white` on `primary-pressed` | 8.98:1 | Pass, button label |
+| `ink` on `accent-gold` | 8.78:1 | Pass, star label |
+| `success` / `warning` / `danger` on `surface` | 5.26 / 5.88 / 5.75:1 | Pass, text |
+| `primary` on `canvas` | 5.54:1 | Pass, text |
+| `focus` on `canvas` | 5.52:1 | Pass, focus ring (3:1 required) |
+| `outline` on `surface` | 1.43:1 | **Decorative only.** Never the sole boundary of a control or input (3:1 non-text required) |
+| `accent-coral` on `surface` | 3.46:1 | **Not for text.** Passes 3:1 for non-text graphics only |
 
 | Token | Hex | Use |
 |---|---|---|
@@ -51,7 +66,7 @@ These are initial values for mockups and usability testing—not a claim of veri
 | `color.outline` | `#D8D8CF` | Borders and dividers |
 | `color.focus` | `#1E5CC6` | Focus indicator |
 
-Rules: never rely on red/green alone; gold is not a default button color; validate contrast in actual states before release. Add a dark theme only if approved as a product requirement.
+Rules: never rely on red/green alone; gold is not a default button color; validate contrast in actual states before release. Add a dark theme only if approved as a product requirement. Pressed and disabled states need their own contrast checks.
 
 ## 4. Typography
 
@@ -116,6 +131,17 @@ Use for pause, close, sound, music, and haptics. Give it a meaningful accessible
 Group related information; do not put every item in a card. Use consistent padding and heading hierarchy. Gameplay panels over the 3D world need a solid enough backing for legibility.
 
 ### Signal control
+Binary signals are approved for v1 (see §16). Proposed state mapping. Every state uses a token, an icon or shape, and a text label:
+
+| State | Color token | Icon / shape | Label |
+|---|---|---|---|
+| Go (green phase) | `color.success` | Up arrow | "GO" |
+| Stop (red phase) | `color.danger` | Solid bar | "STOP" |
+| Blocked / rejected tap | `color.warning` | Circle with slash | "BLOCKED" + reason |
+| Disabled / locked | `color.ink-muted` | Dashed outline | Reason shown on tap |
+
+Signal states are a proposal. Confirm them with the Art Bible's signal-head design before implementation.
+
 Show state with **color plus a distinct icon/shape/label or pattern**. Distinguish active, changing, blocked/invalid, and disabled states. Make controls comfortably tappable without hiding movements. Acknowledge taps immediately, including rejected transitions. UI must reflect authoritative simulation rules; visual effects must not imply a movement is legal when it is not.
 
 ### Route and queue indicators
@@ -204,7 +230,7 @@ Input rules:
 - Haptics must be optional and independently disabled.
 - Avoid rapid flashing and unnecessary motion.
 - Test color-vision deficiency simulations, large text, compact displays, and TalkBack where applicable.
-- English is the initial working language only if confirmed; any advertised Tamil/other localization requires font, layout, and text-expansion testing.
+- English is the initial working language (confirmed 25 Oct 2026). India is the test market. Any Tamil or other localization requires font, layout, and text-expansion testing before it is advertised.
 
 ## 11. Audio and haptics
 
@@ -280,8 +306,19 @@ Suggested token namespaces: `color.*`, `type.*`, `space.*`, `radius.*`, `elevati
 - [ ] Design reference/version and reviewer decision recorded.
 - [ ] Actual-device review completed; mockup alone is not release evidence.
 
-## 16. Decisions requiring approval
+## 16. Decisions
 
-Do not silently decide: final title/logo/package ID; audience, age rating, launch regions and languages; portrait-only vs landscape support; final palette/font/icon family and dark-mode requirement; signal model; undo; scoring formula; 3D map vs grid/list; monetization scope/timing; minimum device and performance budget.
+### Approved (25 Oct 2026)
+- Working title: Signal Shift: Tiny City (trademark and package-ID check pending).
+- Audience: general casual players, not child-directed.
+- Languages and markets: English first; India as test market.
+- Orientation: portrait-first, pending UX testing.
+- Signal model: binary only in v1.
+- Undo: not in v1.
+- Monetization: none in v1; revisit after validation.
+- Device class: mid-range Android (about 4 GB RAM), to be confirmed by profiling.
 
-**Approval gate:** Phase 1 UI production begins only after product decisions that affect layout and gameplay controls are approved. Until then, use this as a proposal and label mockups accordingly.
+### Still open
+Do not silently decide: final logo and package ID; age rating; launch regions beyond the test market; final palette, font, and icon family; dark-mode requirement; scoring formula; 3D map vs grid/list; performance budget.
+
+**Approval gate:** Phase 1 UI production begins after the open decisions above that affect layout and gameplay controls are approved (scoring formula and 3D map vs grid/list). Until then, use this as a proposal and label mockups accordingly.
